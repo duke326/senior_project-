@@ -50,4 +50,6 @@ dependencies {
     implementation 'com.netease.nimlib:lucene:7.5.0'
     // 小米等厂商推送需要
     implementation 'com.netease.nimlib:push:7.5.0'
+    implementation project(':uikit')
+
 }

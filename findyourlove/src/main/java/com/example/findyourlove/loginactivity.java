@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.netease.nim.uikit.api.NimUIKit;
+import com.netease.nim.uikit.impl.NimUIKitImpl;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.auth.AuthService;
@@ -36,7 +38,8 @@ public class loginactivity extends Activity {
                 new RequestCallback<LoginInfo>() {
                     @Override
                     public void onSuccess(LoginInfo param) {
-                        startActivity(new Intent(loginactivity.this,message.class));
+                        NimUIKitImpl.setAccount(param.getAccount());
+                        NimUIKit.startP2PSession(getApplicationContext(), "test");
                         finish();
                     }
 

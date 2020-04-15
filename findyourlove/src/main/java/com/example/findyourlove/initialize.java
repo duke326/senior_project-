@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.netease.nim.uikit.api.NimUIKit;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
@@ -19,6 +20,7 @@ import com.netease.nimlib.sdk.auth.LoginInfo;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 import com.netease.nimlib.sdk.uinfo.model.UserInfo;
+import com.netease.nimlib.sdk.util.NIMUtil;
 
 import java.io.IOException;
 
@@ -26,7 +28,11 @@ public class initialize extends Application {
 
 
     public void onCreate() {
+
         NIMClient.init(this, loginInfo(), options());
+    if(NIMUtil.isMainProcess(this)) {
+        NimUIKit.init(this);
+    }
     }
     private SDKOptions options() {
         SDKOptions options = new SDKOptions();

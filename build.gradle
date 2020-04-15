@@ -4,7 +4,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven{
+            url "https://jitpack.io"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
@@ -18,8 +20,21 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven{
+            url "https://jitpack.io"
+        }
     }
+}
+ext {
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+    minSdkVersion = 17
+    targetSdkVersion = 28
+    appTargetSdkVersion = 2
+    versionCode = 90
+    versionName = '7.5.0'
+    appSourceCompatibility = 1.8
+    appTargetCompatibility = 1.8
 }
 
 task clean(type: Delete) {
