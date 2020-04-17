@@ -39,8 +39,8 @@ public class loginactivity extends Activity {
                     @Override
                     public void onSuccess(LoginInfo param) {
                         NimUIKitImpl.setAccount(param.getAccount());
-                        NimUIKit.startP2PSession(getApplicationContext(), "test");
-                        finish();
+                        Intent intent=new Intent(getApplicationContext(),Main.class);
+                        startActivity(intent);
                     }
 
                     @Override
