@@ -25,7 +25,7 @@
         android:drawableLeft="@mipmap/email"
         android:layout_marginBottom="10dp"
         android:inputType="textEmailAddress"
-        android:id="@+id/signinemail"
+        android:id="@+id/signupemail"
         />
     <EditText
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:drawableLeft="@mipmap/password"
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
-        android:id="@+id/signinpsw"
+        android:id="@+id/signuppsw"
         />
 
     <Button

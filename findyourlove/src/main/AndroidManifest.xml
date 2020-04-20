@@ -100,7 +100,6 @@
         </activity>
         <activity android:name=".signup"></activity>
         <activity android:name=".message"></activity>
-        <activity android:name=".recentContact"></activity>
         <activity android:name=".Main"></activity>
 
     </application>
