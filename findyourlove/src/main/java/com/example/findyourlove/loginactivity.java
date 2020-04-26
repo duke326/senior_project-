@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.example.findyourlove.zhangzhipeng.ConnectDatabase;
 import com.netease.nim.uikit.api.NimUIKit;
 import com.netease.nim.uikit.impl.NimUIKitImpl;
 import com.netease.nimlib.sdk.NIMClient;
@@ -17,23 +18,46 @@ import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class loginactivity extends Activity {
+    static Connection conn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-       Button loginButton=findViewById(R.id.buttonlogin);
+        try {
+            Connect();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Button loginButton=findViewById(R.id.buttonlogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {doLogin();
+            public void onClick(View v) {
+                try {
+                    doLogin();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
     }
-    public void doLogin() {
+    public void doLogin() throws SQLException, ClassNotFoundException {
         EditText loginemail=findViewById(R.id.loginemail);
         EditText loginpsw= findViewById(R.id.loginpsw);
-        LoginInfo info = new LoginInfo(loginemail.getText().toString(),loginpsw.getText().toString()); // config...
+        String information[]=getAccid(null,loginemail.getText().toString(),loginpsw.getText().toString());
+        LoginInfo info = new LoginInfo(information[0],information[1]); // config...
         RequestCallback<LoginInfo> callback =
                 new RequestCallback<LoginInfo>() {
                     @Override
@@ -57,5 +81,50 @@ public class loginactivity extends Activity {
                 };
         NIMClient.getService(AuthService.class).login(info)
                 .setCallback(callback);
+    }
+    //利用用户名和密码来获取ACCID和token
+    public static String[] getAccid(String token,String email,String password) throws SQLException, ClassNotFoundException {
+        //two log in method. The first one is log in with token, returning accid. Email and password are null. The second one is log in with email and password, returning token and accid. Token should be null
+        int accid=0;
+        if(conn==null)
+            ConnectDatabase.Connect();
+        if(token!=null) {
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT accid FROM user WHERE token=?");
+            preparedStatement.setString(1, token);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                accid=resultSet.getInt(1);
+            }
+        }
+        else{
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT token, accid FROM user WHERE email=? AND password=?");
+            preparedStatement.setString(1,email);
+            preparedStatement.setString(2,password);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            String token2=null;
+
+
+            if(resultSet.getFetchSize()==0){
+                System.out.println("ERROR: EMAIL OR PASSWORD");
+            }
+            else{
+                while(resultSet.next()){
+                    token=resultSet.getString(1);
+                    accid=resultSet.getInt(2);
+
+
+//Here! Store the token in the storage!!!!
+                }
+            }
+
+        }
+        return new String[] {Integer.toString(accid),token};
+    }
+    //database connection
+    public static void Connect() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        System.out.println("connect to database");
+        conn = DriverManager.getConnection("jdbc:mysql://date.ihghotel.cn:3306/dating","dating","877152223Zzp!");
     }
 }
