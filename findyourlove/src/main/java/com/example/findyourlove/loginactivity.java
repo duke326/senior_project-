@@ -2,7 +2,9 @@ package com.example.findyourlove;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,11 +20,16 @@ import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import static android.os.Build.VERSION.SDK_INT;
 
 public class loginactivity extends Activity {
     static Connection conn;
@@ -56,31 +63,46 @@ public class loginactivity extends Activity {
     public void doLogin() throws SQLException, ClassNotFoundException {
         EditText loginemail=findViewById(R.id.loginemail);
         EditText loginpsw= findViewById(R.id.loginpsw);
-        String information[]=getAccid(null,loginemail.getText().toString(),loginpsw.getText().toString());
-        LoginInfo info = new LoginInfo(information[0],information[1]); // config...
-        RequestCallback<LoginInfo> callback =
-                new RequestCallback<LoginInfo>() {
-                    @Override
-                    public void onSuccess(LoginInfo param) {
-                        NimUIKitImpl.setAccount(param.getAccount());
-                        Intent intent=new Intent(getApplicationContext(),Main.class);
-                        startActivity(intent);
-                    }
+        int SDK_INT = Build.VERSION.SDK_INT;
+        if (SDK_INT > 8)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            //your codes here
+            try {
+                if (conn==null) Connect();
+                String[] infomation=getAccid(null,loginemail.getText().toString().toLowerCase(),loginpsw.getText().toString());
 
-                    @Override
-                    public void onFailed(int code) {
-                    startActivity(new Intent(getApplicationContext(), signup.class));
-                    finish();
-                    }
+                LoginInfo info = new LoginInfo(infomation[0],infomation[1]); // config...
+                RequestCallback<LoginInfo> callback =
+                        new RequestCallback<LoginInfo>() {
+                            @Override
+                            public void onSuccess(LoginInfo param) {
+                                NimUIKitImpl.setAccount(param.getAccount());
+                                Intent intent=new Intent(getApplicationContext(),Main.class);
+                                startActivity(intent);
+                            }
 
-                    @Override
-                    public void onException(Throwable exception) {
+                            @Override
+                            public void onFailed(int code) {
+                                startActivity(new Intent(getApplicationContext(), signup.class));
+                                finish();
+                            }
 
-                    }
-                    // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
-                };
-        NIMClient.getService(AuthService.class).login(info)
-                .setCallback(callback);
+                            @Override
+                            public void onException(Throwable exception) {
+
+                            }
+                            // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
+                        };
+                NIMClient.getService(AuthService.class).login(info)
+                        .setCallback(callback);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
     //利用用户名和密码来获取ACCID和token
     public static String[] getAccid(String token,String email,String password) throws SQLException, ClassNotFoundException {
@@ -103,28 +125,22 @@ public class loginactivity extends Activity {
             preparedStatement.setString(2,password);
             ResultSet resultSet=preparedStatement.executeQuery();
             String token2=null;
-
-
-            if(resultSet.getFetchSize()==0){
-                System.out.println("ERROR: EMAIL OR PASSWORD");
-            }
-            else{
                 while(resultSet.next()){
                     token=resultSet.getString(1);
                     accid=resultSet.getInt(2);
 
-
 //Here! Store the token in the storage!!!!
-                }
+
             }
 
         }
-        return new String[] {Integer.toString(accid),token};
+        return new String[]{String.valueOf(accid),token};
     }
     //database connection
     public static void Connect() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         System.out.println("connect to database");
         conn = DriverManager.getConnection("jdbc:mysql://date.ihghotel.cn:3306/dating","dating","877152223Zzp!");
+        System.out.println("success");
     }
 }
