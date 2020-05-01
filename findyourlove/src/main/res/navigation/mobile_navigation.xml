@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_home2"
-        android:name="com.example.findyourlove.testtool.home2.HomeFragment2"
+        android:name="com.example.findyourlove.person_info_test"
         android:label="@string/title_home2"
         tools:layout="@layout/fragment_home2" />
 
