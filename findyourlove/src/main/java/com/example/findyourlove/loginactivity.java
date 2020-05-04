@@ -19,6 +19,10 @@ import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
+import com.netease.nimlib.sdk.msg.MessageBuilder;
+import com.netease.nimlib.sdk.msg.MsgService;
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
+import com.netease.nimlib.sdk.msg.model.IMMessage;
 
 import org.json.JSONException;
 
@@ -82,6 +86,9 @@ public class loginactivity extends Activity {
                                 NimUIKitImpl.setAccount(param.getAccount());
                                 Intent intent=new Intent(getApplicationContext(),Main.class);
                                 startActivity(intent);
+                                //IMMessage textMessage = MessageBuilder.createTextMessage("9294419", SessionTypeEnum.P2P, "test");
+                               // NIMClient.getService(MsgService.class).sendMessage(textMessage, false);
+
                             }
 
                             @Override
