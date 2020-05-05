@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.findyourlove.zhangzhipeng.ConnectDatabase;
+import com.example.findyourlove.zhangzhipeng.SignUp;
 import com.netease.nim.uikit.api.NimUIKit;
 import com.netease.nim.uikit.impl.NimUIKitImpl;
 import com.netease.nimlib.sdk.NIMClient;
@@ -50,6 +52,13 @@ public class loginactivity extends Activity {
             e.printStackTrace();
         }
         Button loginButton=findViewById(R.id.buttonlogin);
+        TextView signUpText=findViewById(R.id.signuptext);
+        signUpText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUp.class));
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,20 +95,19 @@ public class loginactivity extends Activity {
                                 NimUIKitImpl.setAccount(param.getAccount());
                                 Intent intent=new Intent(getApplicationContext(),Main.class);
                                 startActivity(intent);
-                                //IMMessage textMessage = MessageBuilder.createTextMessage("9294419", SessionTypeEnum.P2P, "test");
-                               // NIMClient.getService(MsgService.class).sendMessage(textMessage, false);
-
+                                IMMessage textMessage = MessageBuilder.createTextMessage("65471316", SessionTypeEnum.P2P, "test");
+                                NIMClient.getService(MsgService.class).sendMessage(textMessage, false);
                             }
-
                             @Override
                             public void onFailed(int code) {
-                                startActivity(new Intent(getApplicationContext(), signup.class));
-                                finish();
+                                Toast toast = Toast.makeText(getApplicationContext(), "Wrong password! ", Toast.LENGTH_SHORT);
+                                toast.show();
                             }
 
                             @Override
                             public void onException(Throwable exception) {
-
+                                Toast toast = Toast.makeText(getApplicationContext(), "Wrong password Or No existing account", Toast.LENGTH_SHORT);
+                                toast.show();
                             }
                             // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
                         };

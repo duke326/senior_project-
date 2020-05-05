@@ -1,14 +1,19 @@
 package com.example.findyourlove.zhangzhipeng;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.findyourlove.R;
+import com.example.findyourlove.loginactivity;
+import com.example.findyourlove.signup;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -31,8 +36,14 @@ public class SignUp extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
-
+        setContentView(R.layout.zactivity_signup);
+        TextView backtext=findViewById(R.id.backtologin);
+        backtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
     public void signUp(View view){
@@ -49,6 +60,8 @@ public class SignUp extends Activity {
             //your codes here
             try {
                 createUser(stringEmail,stringPsd);
+                Toast toast = Toast.makeText(getApplicationContext(), "Signup successful ", Toast.LENGTH_SHORT);
+                toast.show();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
