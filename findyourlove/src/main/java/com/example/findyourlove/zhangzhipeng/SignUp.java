@@ -37,13 +37,13 @@ public class SignUp extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zactivity_signup);
-        TextView backtext=findViewById(R.id.backtologin);
-        backtext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+       // TextView backtext=findViewById(R.id.backtologin);
+       // backtext.setOnClickListener(new View.OnClickListener() {
+            //@Override
+         //   public void onClick(View v) {
+            //    finish();
+           // }
+      //  });
 
     }
     public void signUp(View view){

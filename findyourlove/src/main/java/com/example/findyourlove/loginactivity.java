@@ -56,7 +56,7 @@ public class loginactivity extends Activity {
         signUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SignUp.class));
+                startActivity(new Intent(getApplicationContext(), zSignUp.class));
             }
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -95,8 +95,8 @@ public class loginactivity extends Activity {
                                 NimUIKitImpl.setAccount(param.getAccount());
                                 Intent intent=new Intent(getApplicationContext(),Main.class);
                                 startActivity(intent);
-                                IMMessage textMessage = MessageBuilder.createTextMessage("65471316", SessionTypeEnum.P2P, "test");
-                                NIMClient.getService(MsgService.class).sendMessage(textMessage, false);
+                                NimUIKit.startP2PSession(getApplicationContext(),"9283604");
+                                //NIMClient.getService(MsgService.class).sendMessage(textMessage, false);
                             }
                             @Override
                             public void onFailed(int code) {

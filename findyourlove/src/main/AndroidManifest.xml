@@ -25,6 +25,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-feature android:name="android.hardware.camera" />
@@ -49,7 +50,11 @@
         >
         <meta-data
             android:name="com.netease.nim.appKey"
-            android:value="26462577589cd3eedea15981b5ce9b2c" />
+            android:value="26462577589cd3eedea15981b5ce9b2c"
+            />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="d773ef884dd3a8eb5bb0d416afb3f63a" />
 
         <!-- 云信后台服务，请使用独立进程。 -->
         <service
@@ -60,6 +65,7 @@
         <service
             android:name="com.netease.nimlib.service.NimService$Aux"
             android:process=":core"/>
+        <service android:name="com.amap.api.location.APSService"></service>
 
         <!-- 云信后台辅助服务 -->
         <service
@@ -98,9 +104,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".zhangzhipeng.SignUp"></activity>
+        <activity android:name=".zSignUp"></activity>
         <activity android:name=".message"></activity>
         <activity android:name=".Main"></activity>
+        <activity android:name=".zMainActivity"/>
+        <activity android:name=".person_info"/>
 
     </application>
 
