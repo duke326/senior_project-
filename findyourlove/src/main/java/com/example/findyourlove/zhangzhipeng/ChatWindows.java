@@ -55,8 +55,8 @@ showUser.setText(userName);
         System.out.println("send");
         //THIS IS DISPLAY PART. SENDING HAS NOT BEEN DONE
 
-        Intent intent=new Intent(this,SignUp.class);
-        startActivity(intent);
+        //Intent intent=new Intent(this,SignUp.class);
+        //startActivity(intent);
     }
 }
 

@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_chat"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="home" />
+        android:title="chat" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_connect_person"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="dashboard" />
+        android:title="friends" />
 
     <item
         android:id="@+id/navigation_notifications"
@@ -17,8 +17,8 @@
         android:title="notifications" />
 
     <item
-        android:id="@+id/navigation_home2"
+        android:id="@+id/navigation_person_info"
         android:icon="@drawable/ic_chat_bubble_outline_black_24dp"
-        android:title="home2" />
+        android:title="person info" />
 
 </menu>

@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/gray9">
+    <!--    标题-->
+    <com.example.findyourlove.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
     <!--    头像-->

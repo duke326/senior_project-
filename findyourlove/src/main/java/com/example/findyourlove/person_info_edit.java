@@ -1,53 +1,50 @@
 package com.example.findyourlove;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.Gravity;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import androidx.navigation.fragment.NavHostFragment;
-
-import com.example.findyourlove.R;
-
-import java.util.ArrayList;
-
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import static android.provider.MediaStore.EXTRA_OUTPUT;
+import androidx.navigation.Navigation;
 
-public class person_info_test extends Fragment {
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.bigkoo.pickerview.view.TimePickerView;
+
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class person_info_edit extends Fragment {
     private ItemGroup ig_id,ig_name,ig_gender,ig_region,ig_brithday;
-    private int id = 1;
+    private int id = 2;
     private TitleLayout titleLayout;
+    private TextView tv_forward,tv_title;
 
-    private PopupWindow popupWindow;
+    //选择器
+    private OptionsPickerView pvOptions;
+    //性别选择器
+    private ArrayList<String> optionsItems_gender = new ArrayList<>();
+    //日期选择器
+    private TimePickerView pvTime;
 
 
-    private FragmentManager fmanager;
-    private FragmentTransaction ftransaction;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.activity_person_info, container, false);
     }
@@ -55,205 +52,106 @@ public class person_info_test extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-/*        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(person_info_test.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });*/
-
-        //setContentView(R.layout.activity_person_info);
-
         ig_id = view.findViewById(R.id.ig_id);
         ig_name = view.findViewById(R.id.ig_name);
         ig_gender = view.findViewById(R.id.ig_gender);
         ig_region = view.findViewById(R.id.ig_region);
         ig_brithday = view.findViewById(R.id.ig_brithday);
         titleLayout = view.findViewById(R.id.tl_title);
-        //ll_portrait = (LinearLayout)findViewById(R.id.ll_portrait);
-        //ri_portrati = (RoundImageView)findViewById(R.id.ri_portrait);
 
+        //使EditTextView可以编辑
+        ig_name.editable();
+        //ig_brithday.editable();
+        ig_region.editable();
+        //ig_gender.editable();
+
+        //为性别选择器添加数据
+        optionsItems_gender.add(new String("Unknown"));
+        optionsItems_gender.add(new String("Male"));
+        optionsItems_gender.add(new String("Female"));
+
+        //设置TitleLayoOut文本
+        tv_forward = titleLayout.findViewById(R.id.tv_forward);
+        tv_forward.setText("Save");
+        tv_title = titleLayout.findViewById(R.id.tv_title);
+        tv_title.setText("Edit Person Info");
+
+
+        //设置监听
+        ig_id.setOnClickListener(this::onClick);
+        titleLayout.findViewById(R.id.tv_forward).setOnClickListener(this::onClick);
+        ig_brithday.setOnClickListener(this::onClick);
+        ig_gender.setOnClickListener(this::onClick);
+
+        //根据全局变量设置id
         ig_id.getContentEdt().setText(String.valueOf(id));
-        getName(id);
-        getBirth(id);
-        getRegion(id);
-        getGender(id);
+
     }
 
     public void onClick(View v){
         switch (v.getId()){
+            //测试用点击事件
+            case R.id.ig_id:
+
+                break;
+
+            //Navigation 跳转
+            case R.id.tv_forward:
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+                try{
+                    Update_Thread.run();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                Navigation.findNavController(v).navigate(R.id.action_navigation_person_info_edit_to_navigation_person_info);
+                break;
+
+            //点击后调出日期选择器
+            case R.id.ig_brithday:
+                TimePickerView pvTime = new TimePickerBuilder(this.getActivity(), new OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date,View v) {//选中事件回调
+                       // tvTime.setText(getTime(date));
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                        ig_brithday.getContentEdt().setText(sdf.format(date));
+                    }
+                }).build();
+                pvTime.show();
+                break;
+
+            //性别选择器
+            case R.id.ig_gender:
+                pvOptions = new OptionsPickerBuilder(this.getActivity(), new OnOptionsSelectListener() {
+                    @Override
+                    public void onOptionsSelect(int options1, int option2, int options3 ,View v) {
+                        String tx = optionsItems_gender.get(options1);
+                        ig_gender.getContentEdt().setText(tx);
+                    }
+                }).setCancelColor(Color.GRAY).build();
+                pvOptions.setPicker(optionsItems_gender);
+                pvOptions.show();
+                break;
+
+            default:
+                break;
+
         }
     }
 
-
-
-    public void gotoDownloadFragment() {    //去下载页面
-        fmanager = getSupportFragmentManager();
-        ftransaction = fmanager.beginTransaction();
-        mDownloadFragment = new DownloadFragment();
-        ftransaction.replace(R.id.rl_fragment_container, mDownloadFragment);
-        ftransaction.commit();
-    }
-
-
-
-/*    private void show_popup_windows(){
-        RelativeLayout layout_photo_selected = (RelativeLayout) getLayoutInflater().inflate(R.layout.photo_select,null);
-        if(popupWindow==null){
-            popupWindow = new PopupWindow(layout_photo_selected, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+    //数据库UPDATE方法
+    Thread Update_Thread = new Thread(new Runnable(){
+        public void run() {
+            try {
+                //System.out.println("Update Thread tends to run");
+               // System.out.println("读取的数据为 name: " + ig_name.getText() + " region: " + ig_region.getText() + " birth: "+ig_brithday.getText() + " gender: "+ig_gender.getText());
+                user_db.Update2(id,ig_name.getText(),ig_region.getText(),ig_brithday.getText(),ig_gender.getText());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        //显示popupwindows
-        popupWindow.showAtLocation(layout_photo_selected, Gravity.CENTER, 0, 0);
-        //设置监听器
-        TextView take_photo =  (TextView) layout_photo_selected.findViewById(R.id.take_photo);
-        TextView from_albums = (TextView)  layout_photo_selected.findViewById(R.id.from_albums);
-        LinearLayout cancel = (LinearLayout) layout_photo_selected.findViewById(R.id.cancel);
-        //拍照按钮监听
-        take_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(popupWindow != null && popupWindow.isShowing()) {
-                    imageUri = photoUtils.take_photo_util(PersonInfo.this, "com.foodsharetest.android.fileprovider", "output_image.jpg");
-                    //调用相机，拍摄结果会存到imageUri也就是outputImage中
-                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                    intent.putExtra(EXTRA_OUTPUT, imageUri);
-                    startActivityForResult(intent, TAKE_PHOTO);
-                    //去除选择框
-                    popupWindow.dismiss();
-                }
-            }
-        });
-        //相册按钮监听
-        from_albums.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //申请权限
-                if(ContextCompat.checkSelfPermission(PersonInfo.this,
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(PersonInfo.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-                }else {
-                    //打开相册
-                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
-                    intent.setType("image/*");
-                    startActivityForResult(intent, FROM_ALBUMS);
-                }
-                //去除选择框
-                popupWindow.dismiss();
-            }
-        });
-        //取消按钮监听
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (popupWindow != null && popupWindow.isShowing()) {
-                    popupWindow.dismiss();
-                }
-            }
-        });
-    }*/
-
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-
-            switch (msg.what){
-                case 0x12:
-                    String s = (String) msg.obj;
-                    ig_name.getContentEdt().setText(s);
-                    break;
-                case 0x13:
-                    String ss = (String) msg.obj;
-                    ig_region.getContentEdt().setText(ss);
-                    break;
-                case 0x14:
-                    String sss = (String) msg.obj;
-                    ig_brithday.getContentEdt().setText(sss);
-                    break;
-                case 0x15:
-                    String ssss = (String) msg.obj;
-                    ig_gender.getContentEdt().setText(ssss);
-                    break;
-                case 0x11:
-                    ArrayList<String> l = (ArrayList)msg.obj;
-                    ig_name.getContentEdt().setText(l.get(0));
-                    break;
-            }
-
-        }
-    };
-
-    private void getName(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getName2(id);
-                message.what = 0x12;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
-
-    private void getRegion(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getRegion(id);
-                message.what = 0x13;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
-
-    private void getBirth(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getBirth(id);
-                message.what = 0x14;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
-
-    private void getGender(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getGender(id);
-                message.what = 0x15;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
+    });
 
 }

@@ -3,24 +3,24 @@
 3    package="com.netease.nim.uikit.test" >
 4
 5    <uses-sdk
-5-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:5:5-73
+5-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:5:5-73
 6        android:minSdkVersion="17"
-6-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:5:15-41
+6-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:5:15-41
 7        android:targetSdkVersion="2" />
-7-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:5:42-70
+7-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:5:42-70
 8
 9    <instrumentation
-9-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:11:5-15:76
+9-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:11:5-15:76
 10        android:name="android.test.InstrumentationTestRunner"
-10-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:11:22-75
+10-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:11:22-75
 11        android:functionalTest="false"
-11-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:14:22-52
+11-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:14:22-52
 12        android:handleProfiling="false"
-12-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:13:22-53
+12-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:13:22-53
 13        android:label="Tests for com.netease.nim.uikit.test"
-13-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:15:22-74
+13-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:15:22-74
 14        android:targetPackage="com.netease.nim.uikit.test" />
-14-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:12:22-72
+14-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:12:22-72
 15    <!-- for android -->
 16    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
 17    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
@@ -101,14 +101,14 @@
 44-->[com.netease.nimlib:basesdk:7.5.0] C:\Users\hycsu\.gradle\caches\transforms-2\files-2.1\bd39b51024d4b29a20df8c79c30fe455\basesdk-7.5.0\AndroidManifest.xml:25:22-78
 45
 46    <application
-46-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:7:5-9:19
+46-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:7:5-9:19
 47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 47-->[androidx.core:core:1.0.0] C:\Users\hycsu\.gradle\caches\transforms-2\files-2.1\ec609e8cee787e2dff3592c66b08a66a\core-1.0.0\AndroidManifest.xml:22:18-86
 48        android:debuggable="true" >
-48-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:7:18-43
+48-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:7:18-43
 49        <uses-library android:name="android.test.runner" />
-49-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:8:9-60
-49-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2605516153893608124.xml:8:23-57
+49-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:8:9-60
+49-->F:\Senior Project\senior_project-\uikit\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7879750175647546655.xml:8:23-57
 50
 51        <activity android:name="com.netease.nim.uikit.business.session.activity.WatchMultiRetweetPictureActivity" />
 51-->[__tested_artifact__::uikit] F:\Senior Project\senior_project-\uikit\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-117

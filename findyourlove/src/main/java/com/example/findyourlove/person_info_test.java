@@ -1,25 +1,49 @@
 package com.example.findyourlove;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.findyourlove.R;
+import com.microsoft.maps.Geopoint;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import static android.provider.MediaStore.EXTRA_OUTPUT;
 
 public class person_info_test extends Fragment {
     private ItemGroup ig_id,ig_name,ig_gender,ig_region,ig_brithday;
     private int id = 1;
+    private TitleLayout titleLayout;
+    private TextView tv_forward,tv_title;
 
     @Override
     public View onCreateView(
@@ -33,132 +57,101 @@ public class person_info_test extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-/*        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(person_info_test.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });*/
-
-        //setContentView(R.layout.activity_person_info);
-
         ig_id = view.findViewById(R.id.ig_id);
         ig_name = view.findViewById(R.id.ig_name);
         ig_gender = view.findViewById(R.id.ig_gender);
         ig_region = view.findViewById(R.id.ig_region);
         ig_brithday = view.findViewById(R.id.ig_brithday);
-        //ll_portrait = (LinearLayout)findViewById(R.id.ll_portrait);
-        //ri_portrati = (RoundImageView)findViewById(R.id.ri_portrait);
+        titleLayout = view.findViewById(R.id.tl_title);
 
+        //设置TitleLayout文本
+        tv_forward = titleLayout.findViewById(R.id.tv_forward);
+        tv_forward.setText("Edit");
+        tv_title = titleLayout.findViewById(R.id.tv_title);
+        tv_title.setText("Person Info");
+
+        //使箭头不可见
+        ig_name.invisible();
+        ig_gender.invisible();
+        ig_region.invisible();
+        ig_brithday.invisible();
+
+
+        //设置监听
+        titleLayout.findViewById(R.id.tv_forward).setOnClickListener(this::onClick);
+        ig_name.setOnClickListener(this::onClick);
+        ig_brithday.setOnClickListener(this::onClick);
+
+        //显示id
         ig_id.getContentEdt().setText(String.valueOf(id));
-        getName(id);
-        getBirth(id);
-        getRegion(id);
-        getGender(id);
+
+        //从数据读取数据
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        try{
+            Initial_Thread.run();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
 
-            switch (msg.what){
-                case 0x12:
-                    String s = (String) msg.obj;
-                    ig_name.getContentEdt().setText(s);
-                    break;
-                case 0x13:
-                    String ss = (String) msg.obj;
-                    ig_region.getContentEdt().setText(ss);
-                    break;
-                case 0x14:
-                    String sss = (String) msg.obj;
-                    ig_brithday.getContentEdt().setText(sss);
-                    break;
-                case 0x15:
-                    String ssss = (String) msg.obj;
-                    ig_gender.getContentEdt().setText(ssss);
-                    break;
-                case 0x11:
-                    ArrayList<String> l = (ArrayList)msg.obj;
-                    ig_name.getContentEdt().setText(l.get(0));
-                    break;
-            }
+    public void onClick(View v){
+        switch (v.getId()){
+            //测试用点击事件
+            case R.id.ig_name:
+
+                //String s = ig_name.getText();
+                //.out.println("ig_name中的文本是"+s);
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+                try{
+                    Initial_Thread.run();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                //System.out.println("监听到了点击");
+                break;
+            //测试用点击事件
+            case R.id.ig_brithday:
+/*                StrictMode.ThreadPolicy policy1 = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy1);
+                try{
+                    Update_Thread.run();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }*/
+                System.out.println("ig_birthday监听到了点击");
+                break;
+            //navigation跳转
+            case R.id.tv_forward:
+                System.out.println("person_info_test tv_forward 监听到了点击");
+                Navigation.findNavController(v).navigate(R.id.action_navigation_person_info_to_navigation_person_info_edit);
+                break;
+            default:
+                break;
 
         }
-    };
-
-    private void getName(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getName2(id);
-                message.what = 0x12;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
     }
 
-    private void getRegion(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getRegion(id);
-                message.what = 0x13;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
-
-    private void getBirth(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getBirth(id);
-                message.what = 0x14;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
-
-    private void getGender(final int id){
-
-        new Thread(new Runnable() {
-            @Override
-
-            public void run() {
-                Message message = handler.obtainMessage();
-                String ss;
-                ss = com.example.findyourlove.user_db.db_getGender(id);
-                message.what = 0x15;
-                message.obj = ss;
-                //System.out.println("开出的线程中ss = " +ss);
-                handler.sendMessage(message);
-            }
-        }).start();
-
-    }
+    //新数据库读取方法
+    Thread Initial_Thread =new Thread(new Runnable() {
+        @Override
+        public void run() {
+                try {
+                    System.out.println("Ready to upload");
+                    //ig_name.setTuser_db.getName2(id);
+                    ig_name.getContentEdt().setText(user_db.getName2(id));
+                    ig_brithday.getContentEdt().setText(user_db.getBirth2(id));
+                    ig_gender.getContentEdt().setText(user_db.getGender2(id));
+                    ig_region.getContentEdt().setText(user_db.getRegion2(id));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+        }
+    });
 
 }

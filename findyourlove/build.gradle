@@ -106,4 +106,5 @@ dependencies {
     //implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     //implementation files('src/main/assets/mysql-connector-java-5.1.30-bin.jar')
     implementation files('src/main/libs/mysql-connector-java-5.1.30-bin.jar')
+    implementation 'com.contrarywind:wheelview:4.1.0'
 }

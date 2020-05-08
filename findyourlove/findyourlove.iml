@@ -183,5 +183,8 @@
     <orderEntry type="library" name="Gradle: com.contrarywind:wheelview:4.1.0@aar" level="project" />
     <orderEntry type="module" module-name="uikit" />
     <orderEntry type="library" name="Gradle: org.apache.http.legacy-android-29" level="project" />
+    <orderEntry type="module" module-name="uikit" />
+    <orderEntry type="module" module-name="uikit" />
+    <orderEntry type="module" module-name="uikit" />
   </component>
 </module>
