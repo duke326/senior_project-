@@ -38,6 +38,7 @@ import java.sql.SQLException;
 import static android.os.Build.VERSION.SDK_INT;
 
 public class loginactivity extends Activity {
+    public static String accid;
     static Connection conn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +87,7 @@ public class loginactivity extends Activity {
             try {
                 if (conn==null) Connect();
                 String[] infomation=getAccid(null,loginemail.getText().toString().toLowerCase(),loginpsw.getText().toString());
-
+                accid=infomation[0];
                 LoginInfo info = new LoginInfo(infomation[0],infomation[1]); // config...
                 RequestCallback<LoginInfo> callback =
                         new RequestCallback<LoginInfo>() {
@@ -94,6 +95,9 @@ public class loginactivity extends Activity {
                             public void onSuccess(LoginInfo param) {
                                 NimUIKitImpl.setAccount(param.getAccount());
                                 Intent intent=new Intent(getApplicationContext(),Main.class);
+                                Bundle bundle=new Bundle();
+                                bundle.putString("accid",infomation[0]);
+                                intent.putExtras(bundle);
                                 startActivity(intent);
                                 NimUIKit.startP2PSession(getApplicationContext(),"9283604");
                                 //NIMClient.getService(MsgService.class).sendMessage(textMessage, false);

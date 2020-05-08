@@ -65,7 +65,7 @@
         <service
             android:name="com.netease.nimlib.service.NimService$Aux"
             android:process=":core"/>
-        <service android:name="com.amap.api.location.APSService"></service>
+
 
         <!-- 云信后台辅助服务 -->
         <service
@@ -109,7 +109,7 @@
         <activity android:name=".Main"></activity>
         <activity android:name=".zMainActivity"/>
         <activity android:name=".person_info"/>
-
+        <service android:name="com.amap.api.location.APSService"></service>
     </application>
 
 </manifest>

@@ -48,7 +48,7 @@ public  class zMainActivity extends Activity implements AMapLocationListener {
     public AMapLocationClientOption mLocationOption = null;
     private boolean begin=true;
     RecyclerView showUser;
-    static int accid=-1;
+    static int accid=Integer.parseInt(loginactivity.accid);
     static boolean onetime=true;
     Geopoint currentPoint=null;
     private AMapLocation currentLocation;
@@ -61,6 +61,7 @@ public  class zMainActivity extends Activity implements AMapLocationListener {
         setContentView(R.layout.zactivity_main);
     //    Demodata.add(new zTemporaryData(1,"demoUser","Prefer Not to Say",32.0652,118.62,-1));
      //  Demodata.add(new zTemporaryData(200,"demoUser2","Male",32.05,118.63,88));
+        Intent intent=getIntent();
 
 
         String[] permission={"android.permission.ACCESS_COARSE_LOCATION","android.permission.INTERNET"};
@@ -156,7 +157,7 @@ homeAdapter=new HomeAdapter(this);
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
 
-
+        System.out.println(accid);
         System.out.println("hhhhhhhhhhhhhhhhh");
         if (amapLocation != null) {
             if (amapLocation.getErrorCode() == 0) {
@@ -199,8 +200,8 @@ homeAdapter=new HomeAdapter(this);
                                 ResultSet resultSet=zConnectDatabase.getSurroundingUserLocation(currentPoint,3);
                                 while(resultSet.next()){
                                     int accid=resultSet.getInt(1);
-                                    double longitude=32;
-                                    double latitude=118;
+                                    double longitude=resultSet.getDouble(2);
+                                    double latitude=resultSet.getDouble(3);
                                     String[] userInfo=zConnectDatabase.getUser(accid);
                                     double distance=Math.sqrt(Math.pow(currentPoint.getPosition().getLatitude()-latitude,2)+Math.pow(currentPoint.getPosition().getLongitude()-longitude,2));
                                     zTemporaryData newUser=new zTemporaryData(distance,userInfo[0],userInfo[1],latitude,longitude,accid);
