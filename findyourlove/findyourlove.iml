@@ -175,6 +175,8 @@
     <orderEntry type="library" name="Gradle: me.leolin:ShortcutBadger:1.1.22@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.netease.nimlib:superteam:7.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.microsoft.maps:maps-sdk:1.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.contrarywind:Android-PickerView:4.1.8@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.contrarywind:wheelview:4.0.9@aar" level="project" />
     <orderEntry type="module" module-name="uikit" />
     <orderEntry type="library" name="Gradle: org.apache.http.legacy-android-29" level="project" />
   </component>

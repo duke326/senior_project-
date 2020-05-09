@@ -105,7 +105,7 @@ public class person_info extends AppCompatActivity {
             public void run() {
                 Message message = handler.obtainMessage();
                 String ss;
-                ss = com.example.findyourlove.user_db.db_getName2(id);
+                ss = com.example.findyourlove.user_db1.db_getName2(id);
                 message.what = 0x12;
                 message.obj = ss;
                 //System.out.println("开出的线程中ss = " +ss);
@@ -123,7 +123,7 @@ public class person_info extends AppCompatActivity {
             public void run() {
                 Message message = handler.obtainMessage();
                 String ss;
-                ss = com.example.findyourlove.user_db.db_getRegion(id);
+                ss = com.example.findyourlove.user_db1.db_getRegion(id);
                 message.what = 0x13;
                 message.obj = ss;
                 //System.out.println("开出的线程中ss = " +ss);
@@ -141,7 +141,7 @@ public class person_info extends AppCompatActivity {
             public void run() {
                 Message message = handler.obtainMessage();
                 String ss;
-                ss = com.example.findyourlove.user_db.db_getBirth(id);
+                ss = com.example.findyourlove.user_db1.db_getBirth(id);
                 message.what = 0x14;
                 message.obj = ss;
                 //System.out.println("开出的线程中ss = " +ss);
@@ -159,7 +159,7 @@ public class person_info extends AppCompatActivity {
             public void run() {
                 Message message = handler.obtainMessage();
                 String ss;
-                ss = com.example.findyourlove.user_db.db_getGender(id);
+                ss = com.example.findyourlove.user_db1.db_getGender(id);
                 message.what = 0x15;
                 message.obj = ss;
                 //System.out.println("开出的线程中ss = " +ss);

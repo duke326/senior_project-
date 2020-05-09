@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,7 +50,7 @@ public class ItemGroup extends FrameLayout{
         View view = LayoutInflater.from(context).inflate(R.layout.item_group_layout, null);
         itemGroupLayout = (LinearLayout) view.findViewById(R.id.item_group_layout);
         titleTv = (TextView) view.findViewById(R.id.title_tv);
-        contentEdt = (TextView) view.findViewById(R.id.content_edt);
+        contentEdt = (EditText) view.findViewById(R.id.content_edt);
         jtRightIv = (ImageView) view.findViewById(R.id.jt_right_iv);
         addView(view); //把自定义的这个组合控件的布局加入到当前FramLayout
     }
@@ -98,9 +99,27 @@ public class ItemGroup extends FrameLayout{
         contentEdt.setTextColor(contentColor);
         contentEdt.setHint(hintContent);
         contentEdt.setHintTextColor(hintColor);
-//        contentEdt.setFocusable(isEditable); //设置输入框是否可以编辑
+        //contentEdt.setFocusable(isEditable); //设置输入框是否可以编辑
+        contentEdt.setEnabled(false);
 //        contentEdt.setClickable(true);
 //        contentEdt.setKeyListener(null);
         jtRightIv.setVisibility(showJtIcon ? View.VISIBLE : View.GONE);  //设置向右的箭头图标是否可见
+    }
+
+    public void editable(){
+        contentEdt.setEnabled(true);
+    }
+
+    public String getText(){
+        System.out.println("当前text为" + contentEdt.getText().toString());
+        return contentEdt.getText().toString();
+    }
+
+    public void setText(String text){
+        contentEdt.setText(text);
+    }
+
+    public void invisible(){
+        jtRightIv.setVisibility(View.INVISIBLE);
     }
 }

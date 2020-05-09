@@ -5,6 +5,11 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_home2">Chat</string>
 
+    <string name="title_chat">Chat</string>
+    <string name="title_connect_person">Friends</string>
+    <string name="title_person_info">Person Info</string>
+
+
     <string name="title_activity_t_e_s_t_a_c_t_i_v_i_t_y">TESTACTIVITY</string>
 
     <!-- Strings used for fragments for navigation -->
