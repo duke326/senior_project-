@@ -103,4 +103,16 @@ public class zConnectDatabase {
 
 
     }
+    public static void initialLocation(int accid) throws SQLException, ClassNotFoundException {
+        if(conn==null)
+            zConnectDatabase.Connect();
+        PreparedStatement preparedStatement=conn.prepareStatement("INSERT INTO Location VALUES(?,?,?,?)");
+        preparedStatement.setInt(1,accid);
+        preparedStatement.setDouble(2,-100);
+        preparedStatement.setDouble(3,-100);
+        preparedStatement.setBoolean(4,true);
+        preparedStatement.execute();
+
+
+    }
 }

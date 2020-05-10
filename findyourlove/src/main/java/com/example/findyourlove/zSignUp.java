@@ -115,6 +115,7 @@ String token=genToken(accid,name,email);
 if(token!=null){
     System.out.println(token);
     zConnectDatabase.addUser(accid,token,email,password);
+    zConnectDatabase.initialLocation(accid);
 }
 else{
     System.out.println("token fail");

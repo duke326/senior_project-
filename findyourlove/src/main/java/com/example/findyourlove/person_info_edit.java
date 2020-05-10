@@ -26,7 +26,8 @@ import java.util.Date;
 
 public class person_info_edit extends Fragment {
     private ItemGroup ig_id,ig_name,ig_gender,ig_region,ig_brithday;
-    private int id =Integer.parseInt(loginactivity.accid);
+    //private int id = Integer.parseInt(loginactivity.accid);
+    private int id = Integer.parseInt(loginactivity.accid);
     private TitleLayout titleLayout;
     private TextView tv_forward,tv_title;
 
@@ -46,7 +47,7 @@ public class person_info_edit extends Fragment {
     ) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_person_info, container, false);
+        return inflater.inflate(R.layout.activity_person_info_basic, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {

@@ -11,37 +11,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1193165-60bb-4009-b244-bdf6f9021ac4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_contrarywind_Android_PickerView_4_1_8_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_contrarywind_wheelview_4_0_9_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/TitleLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info_edit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info_test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/user_db1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/findyourlove/src/main/res/layout/bar_title.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findyourlove/src/main/res/layout/activity_person_info_basic.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/findyourlove.iml" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/findyourlove.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/ItemGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/ItemGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info_edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info_edit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/person_info_test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/user_db.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/user_db.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/res/layout/activity_person_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/res/layout/activity_person_info.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/res/layout/item_group_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/res/layout/item_group_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uikit/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uikit/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/zConnectDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/zConnectDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/zSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/findyourlove/src/main/java/com/example/findyourlove/zSignUp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +69,7 @@
     <property name="SelectDeploymentTargetsDialog.selectedDevices" value="Pixel_2_API_26&#10;Pixel_2_API_26_2" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/findyourlove/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="E:/fl/findyourlove" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/findyourlove/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -96,9 +79,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\devil\AndroidStudioProjects\Findyourlove\findyourlove\src\main\res\layout" />
       <recent name="C:\Users\devil\AndroidStudioProjects\Findyourlove\findyourlove\src\main\java\com\example\findyourlove" />
       <recent name="C:\Users\devil\AndroidStudioProjects\Findyourlove\findyourlove\src\main\res\values" />
-      <recent name="C:\Users\devil\AndroidStudioProjects\Findyourlove\findyourlove\src\main\res\layout" />
       <recent name="C:\Users\devil\AndroidStudioProjects\Findyourlove\findyourlove\src\main\res\menu" />
       <recent name="C:\Users\devil\AndroidStudioProjects\Findyourlove\findyourlove\src\main\res\navigation" />
     </key>
