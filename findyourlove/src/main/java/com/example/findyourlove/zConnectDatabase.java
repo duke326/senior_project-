@@ -82,7 +82,7 @@ public class zConnectDatabase {
     public static String[] getUser(int accid) throws SQLException, ClassNotFoundException {
         if(conn==null)
             zConnectDatabase.Connect();
-        PreparedStatement preparedStatement=conn.prepareStatement("SELECT name, gender FROM Test WHERE id = ?");
+        PreparedStatement preparedStatement=conn.prepareStatement("SELECT name, gender FROM user WHERE accid = ?");
         preparedStatement.setInt(1,accid);
         String[] user=new String[2];
         ResultSet resultSet=preparedStatement.executeQuery();
