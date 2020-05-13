@@ -1,19 +1,15 @@
 package com.example.findyourlove.zhangzhipeng;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.findyourlove.R;
-import com.example.findyourlove.loginactivity;
-import com.example.findyourlove.signup;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

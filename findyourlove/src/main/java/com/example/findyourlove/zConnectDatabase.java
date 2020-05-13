@@ -63,16 +63,17 @@ public class zConnectDatabase {
         return accid;
     }
 
-    public static ResultSet getSurroundingUserLocation(Geopoint geopoint,double radius) throws SQLException, ClassNotFoundException {
+    public static ResultSet getSurroundingUserLocation(Geopoint geopoint,double radius,int accid) throws SQLException, ClassNotFoundException {
         if(conn==null)
             zConnectDatabase.Connect();
         double longitude=geopoint.getPosition().getLongitude();
         double latitude=geopoint.getPosition().getLatitude();
-        PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM Location WHERE longitude - ? < ? and latitude - ? < ?");
+        PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM Location WHERE longitude - ? < ? and latitude - ? < ? and accid != ?");
         preparedStatement.setDouble(1,longitude);
         preparedStatement.setDouble(2,radius);
         preparedStatement.setDouble(3,latitude);
         preparedStatement.setDouble(4,radius);
+        preparedStatement.setInt(5,accid);
 
         ResultSet resultSet=preparedStatement.executeQuery();
 

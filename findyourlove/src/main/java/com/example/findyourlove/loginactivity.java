@@ -99,7 +99,7 @@ public class loginactivity extends Activity {
                                 bundle.putString("accid",infomation[0]);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
-                                NimUIKit.startP2PSession(getApplicationContext(),"9283604");
+                                //NimUIKit.startP2PSession(getApplicationContext(),"9283604");
                                 //NIMClient.getService(MsgService.class).sendMessage(textMessage, false);
                             }
                             @Override

@@ -147,11 +147,11 @@ public class TimeUtil {
         Date preyesterday = new Date(yesterdaybegin.getTime() - 3600 * 24 * 1000);
 
         if (!currentTime.before(todaybegin)) {
-            dataString = "今天";
+            dataString = "Toady";
         } else if (!currentTime.before(yesterdaybegin)) {
-            dataString = "昨天";
+            dataString = "Yesterday";
         } else if (!currentTime.before(preyesterday)) {
-            dataString = "前天";
+            dataString = "Day before yesterday";
         } else if (isSameWeekDates(currentTime, today)) {
             dataString = getWeekOfDate(currentTime);
         } else {
@@ -186,13 +186,13 @@ public class TimeUtil {
         SimpleDateFormat timeformatter1to12 = new SimpleDateFormat("hh:mm", Locale.getDefault());
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         if (hour >= 0 && hour < 5) {
-            return "凌晨 " + timeformatter0to11.format(date);
+            return  timeformatter0to11.format(date)+"AM";
         } else if (hour >= 5 && hour < 12) {
-            return "上午 " + timeformatter0to11.format(date);
+            return timeformatter0to11.format(date)+"AM";
         } else if (hour >= 12 && hour < 18) {
-            return "下午 " + timeformatter1to12.format(date);
+            return timeformatter0to11.format(date)+"PM";
         } else if (hour >= 18 && hour < 24) {
-            return "晚上 " + timeformatter1to12.format(date);
+            return timeformatter0to11.format(date)+"PM";
         }
         return "";
     }

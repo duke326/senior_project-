@@ -229,7 +229,7 @@
     <string name="crop">裁剪</string>
 
     <!-- 消息类型 -->
-    <string name="msg_type_image">图片</string>
+    <string name="msg_type_image">Photo</string>
     <string name="msg_type_audio">语音</string>
     <string name="msg_type_multi_retweet">[聊天记录]</string>
 

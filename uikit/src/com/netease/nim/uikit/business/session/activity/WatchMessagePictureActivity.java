@@ -143,7 +143,7 @@ public class WatchMessagePictureActivity extends UI {
         if (message == null) {
             return;
         }
-        super.setTitle(String.format("图片发送于%s", TimeUtil.getDateString(message.getTime())));
+        super.setTitle(String.format("%s", TimeUtil.getDateString(message.getTime())));
     }
 
     private void initActionbar() {

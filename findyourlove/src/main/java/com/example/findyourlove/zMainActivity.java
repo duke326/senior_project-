@@ -197,7 +197,7 @@ homeAdapter=new HomeAdapter(this);
                         if(onetime){
                             onetime=false;
                             try {
-                                ResultSet resultSet=zConnectDatabase.getSurroundingUserLocation(currentPoint,3);
+                                ResultSet resultSet=zConnectDatabase.getSurroundingUserLocation(currentPoint,3,accid);
                                 while(resultSet.next()){
                                     int accid=resultSet.getInt(1);
                                     double longitude=resultSet.getDouble(2);

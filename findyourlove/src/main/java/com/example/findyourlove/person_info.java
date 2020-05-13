@@ -52,7 +52,7 @@ public class person_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle bundle=this.getIntent().getExtras();
         //System.out.println("ACCID IS " + bundle.getInt("accid"));
-        //id=bundle.getInt("accid");
+        id=bundle.getInt("accid");
         setContentView(R.layout.activity_person_info);
 
         ig_id = (ItemGroup)findViewById(R.id.ig_id);

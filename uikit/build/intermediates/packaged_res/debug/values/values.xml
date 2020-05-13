@@ -462,7 +462,7 @@
     <string name="msg_search">全文检索</string>
     <string name="msg_search_limit">全文检索显示条数</string>
     <string name="msg_type_audio">语音</string>
-    <string name="msg_type_image">图片</string>
+    <string name="msg_type_image">Photo</string>
     <string name="msg_type_multi_retweet">[聊天记录]</string>
     <string name="multi_image_compressed_size">原始图片总大小为: %1$s,</string>
     <string name="multiple_selection">多 选</string>
