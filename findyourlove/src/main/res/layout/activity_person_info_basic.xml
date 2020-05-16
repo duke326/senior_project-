@@ -5,22 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/gray9">
-    <!--    标题-->
-    <com.example.findyourlove.TitleLayout
-        android:id="@+id/tl_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:background="@drawable/background">
 
-
-    <!--    头像-->
+    <!--    头像一行-->
     <LinearLayout
         android:id="@+id/ll_portrait"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
-        android:paddingBottom="10dp"
-        android:background="@color/white">
+        android:paddingBottom="10dp">
 
         <com.example.findyourlove.RoundImageView
             android:id="@+id/ri_portrait"
@@ -28,15 +21,33 @@
             android:layout_height="60dp"
             android:layout_marginLeft="@dimen/padding_left_and_right"
             android:scaleType="centerCrop"
-            android:src="@mipmap/default_header"/>
+            android:src="@mipmap/default_header2"/>
+
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/blank_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:gravity="center_horizontal|center"
+            android:singleLine="true"
             android:text=""
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/edit_save"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingRight="5dp"
+            android:singleLine="true"
+            android:text="Edit"
             android:textColor="@color/gray3"
-            android:layout_gravity="center"
-            android:paddingLeft="@dimen/padding_left_and_right"/>
+            android:textSize="18dp"/>
 
     </LinearLayout>
     <!--    编辑界面，此处可以写成一个ItemGroup上传至com上-->

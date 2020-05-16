@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/navigation_chat"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_chat_bubble_outline_black_24dp"
         android:title="chat" />
 
     <item
         android:id="@+id/navigation_connect_person"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_people_black_24dp"
         android:title="friends" />
 
     <item
@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_person_info"
-        android:icon="@drawable/ic_chat_bubble_outline_black_24dp"
+        android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="person info" />
 
 </menu>

@@ -197,13 +197,14 @@ homeAdapter=new HomeAdapter(this);
                         if(onetime){
                             onetime=false;
                             try {
-                                ResultSet resultSet=zConnectDatabase.getSurroundingUserLocation(currentPoint,3,accid);
+                                ResultSet resultSet=zConnectDatabase.getSurroundingUserLocation(currentPoint,1,accid);
                                 while(resultSet.next()){
                                     int accid=resultSet.getInt(1);
                                     double longitude=resultSet.getDouble(2);
                                     double latitude=resultSet.getDouble(3);
                                     String[] userInfo=zConnectDatabase.getUser(accid);
-                                    double distance=Math.sqrt(Math.pow(currentPoint.getPosition().getLatitude()-latitude,2)+Math.pow(currentPoint.getPosition().getLongitude()-longitude,2));
+                               //     double distance=Math.sqrt(Math.pow(currentPoint.getPosition().getLatitude()-latitude,2)+Math.pow(currentPoint.getPosition().getLongitude()-longitude,2));
+                                 double  distance=GetDistance(currentPoint.getPosition().getLatitude(),currentPoint.getPosition().getLongitude(),latitude,longitude);
                                     zTemporaryData newUser=new zTemporaryData(distance,userInfo[0],userInfo[1],latitude,longitude,accid);
                                     Demodata.add(newUser);
                                     homeAdapter.notifyItemInserted(Demodata.size()-1);
@@ -245,6 +246,27 @@ homeAdapter=new HomeAdapter(this);
                         + amapLocation.getErrorInfo());
             }
         }
+    }
+
+    private static double rad(double d)
+    {
+        return d * Math.PI / 180.0;
+    }
+
+    /**
+     * 根据两点间经纬度坐标（double值），计算两点间距离，单位为米
+     */
+    public static double GetDistance(double lat1, double lng1, double lat2, double lng2)
+    {
+        double radLat1 = rad(lat1);
+        double radLat2 = rad(lat2);
+        double a = radLat1 - radLat2;
+        double b = rad(lng1) - rad(lng2);
+        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
+                Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+        s = s * 6378.137;
+        s = Math.round(s * 10000) / 10000;
+        return s;
     }
 }
 

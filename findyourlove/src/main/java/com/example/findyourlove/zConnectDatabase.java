@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static com.example.findyourlove.loginactivity.conn;
+
 public class zConnectDatabase {
     static Connection conn;
     public static void Connect() throws ClassNotFoundException, SQLException {
@@ -61,6 +63,14 @@ public class zConnectDatabase {
 
         }
         return accid;
+    }
+    public static boolean isExist(String email) throws SQLException, ClassNotFoundException {  //if the return value is true, it means this email exists in the database, the register should be refused
+        if(conn==null)
+            zConnectDatabase.Connect();
+        PreparedStatement preparedStatement=conn.prepareStatement("SELECT email FROM user WHERE email = ?");
+        preparedStatement.setString(1,email);
+        ResultSet resultSet=preparedStatement.executeQuery();
+        return resultSet.next();
     }
 
     public static ResultSet getSurroundingUserLocation(Geopoint geopoint,double radius,int accid) throws SQLException, ClassNotFoundException {

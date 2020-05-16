@@ -13,35 +13,10 @@ import com.netease.nim.uikit.api.NimUIKit;
 
 
 import android.widget.Button;
-import android.os.Bundle;
-import com.netease.nim.uikit.api.NimUIKit;
-import com.netease.nim.uikit.impl.NimUIKitImpl;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-//import com.personinfo.util.ActivityCollector;
-//import com.example.findyourlove.ItemGroup;
-//import com.example.findyourlove.RoundImageView;
-//import com.example.findyourlove.TitleLayout;
-import java.util.ArrayList;
-
-import com.netease.nim.uikit.api.NimUIKit;
-import com.netease.nim.uikit.impl.NimUIKitImpl;
-
-import android.os.Handler;
-
 
 
 public class person_info extends AppCompatActivity {
     private ItemGroup ig_id,ig_name,ig_gender,ig_region,ig_brithday;
-    private LinearLayout ll_portrait;
-    private RoundImageView ri_portrati;
 
     private int id = Integer.parseInt(loginactivity.accid);
 
@@ -51,7 +26,7 @@ public class person_info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle=this.getIntent().getExtras();
-        //System.out.println("ACCID IS " + bundle.getInt("accid"));
+        System.out.println("ACCID IS " + bundle.getInt("accid"));
         id=bundle.getInt("accid");
         setContentView(R.layout.activity_person_info);
 
@@ -60,21 +35,20 @@ public class person_info extends AppCompatActivity {
         ig_gender = (ItemGroup)findViewById(R.id.ig_gender);
         ig_region = (ItemGroup)findViewById(R.id.ig_region);
         ig_brithday = (ItemGroup)findViewById(R.id.ig_brithday);
-        ll_portrait = (LinearLayout)findViewById(R.id.ll_portrait);
-        ri_portrati = (RoundImageView)findViewById(R.id.ri_portrait);
-        //titleLayout = (TitleLayout)findViewById(R.id.tl_title);
+
         Button chatbutton=findViewById(R.id.Chat);
-        Button back=findViewById(R.id.Back);
         chatbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NimUIKit.startP2PSession(getApplicationContext(),Integer.toString(id));
             }
         });
+        Button back=findViewById(R.id.Back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Main.class));;
+                Intent intent=new Intent(getApplicationContext(),Main.class);
+                startActivity(intent);
             }
         });
 
@@ -84,7 +58,7 @@ public class person_info extends AppCompatActivity {
         ig_region.invisible();
         ig_brithday.invisible();
 
-        ig_id.getContentEdt().setText(String.valueOf(id));
+        ig_id.getContentEdt().setText(String.valueOf(id) + "               ");
 
         //从数据读取数据
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -115,13 +89,13 @@ public class person_info extends AppCompatActivity {
     });
 
 
- public void chat(View view){
+/*    public void chat(View view){
         Bundle bundle=new Bundle();
         bundle.putInt("accid",id);
         Intent intent=new Intent(this,message.class);
         startActivity(intent,bundle);
 
         NimUIKit.startP2PSession(getApplicationContext(),Integer.toString(id));
-    }
+    }*/
 
 }

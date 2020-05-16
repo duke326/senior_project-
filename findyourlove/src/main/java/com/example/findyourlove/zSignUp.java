@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -20,10 +21,15 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.security.MessageDigest;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import static com.example.findyourlove.loginactivity.conn;
+import static com.example.findyourlove.zConnectDatabase.isExist;
 
 public class zSignUp extends Activity {
     @Override
@@ -46,7 +52,15 @@ public class zSignUp extends Activity {
             StrictMode.setThreadPolicy(policy);
             //your codes here
             try {
-                createUser(stringEmail,stringPsd);
+                if(!isExist(stringEmail)) {
+                    createUser(stringEmail, stringPsd);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Create success ", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else{
+                    Toast toast = Toast.makeText(getApplicationContext(), "Account has existed ", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -153,6 +167,7 @@ class CheckSumBuilder {
         }
         return buf.toString();
     }
+
 
     private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 

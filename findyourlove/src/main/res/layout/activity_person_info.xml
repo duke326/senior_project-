@@ -5,12 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/gray9">
-    <!--    标题-->
-    <com.example.findyourlove.TitleLayout
-        android:id="@+id/tl_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:background="@drawable/background">
 
 
     <!--    头像-->
@@ -19,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
-        android:paddingBottom="10dp"
-        android:background="@color/white">
+        android:paddingBottom="10dp">
 
         <com.example.findyourlove.RoundImageView
             android:id="@+id/ri_portrait"
@@ -28,7 +22,7 @@
             android:layout_height="60dp"
             android:layout_marginLeft="@dimen/padding_left_and_right"
             android:scaleType="centerCrop"
-            android:src="@mipmap/default_header"/>
+            android:src="@mipmap/default_header2"/>
 
         <TextView
             android:layout_width="wrap_content"
